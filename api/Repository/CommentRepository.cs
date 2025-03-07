@@ -22,5 +22,15 @@ namespace api.Repository
         {
             return await _context.Comment.ToListAsync();
         }
+
+        public async Task<Comment?> GetByIdAsync(int id)
+        {
+            var comment = await _context.Comment.FindAsync(id);
+
+            if (comment == null)
+                return null;
+            
+            return comment;
+        }
     }
 }
