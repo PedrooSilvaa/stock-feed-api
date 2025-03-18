@@ -43,7 +43,7 @@ namespace api.Controllers
         }
 
         [HttpPost("{stockId:int}")]
-        public async Task<IActionResult> Create([FromRoute] int stockId, CreateCommentRequestDto commentDto){
+        public async Task<IActionResult> Create([FromRoute] int stockId, [FromBody] CreateCommentRequestDto commentDto){
             if(!ModelState.IsValid)
                 return BadRequest();
 
