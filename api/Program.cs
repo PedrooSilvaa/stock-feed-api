@@ -2,6 +2,7 @@ using api.Data;
 using api.Interfaces;
 using api.Models;
 using api.Repository;
+using api.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -24,10 +25,10 @@ builder.Services.AddDbContext<ApplicationDBContext>(options => {
 // Registra a interface e a implementação do repositório de estoque no container de injeção de dependência.
 // Sempre que a aplicação solicitar um `IStockRepository`, será entregue uma instância de `StockReository`.
 // Isso segue o ciclo de vida Scoped (uma instância por requisição).
+//O mesmo acontece com os demais abaixo
 builder.Services.AddScoped<IStockRepository, StockReository>();
-// Registra a interface e a implementação do repositório de comentários no container de injeção de dependência.
-// Funciona do mesmo modo que o repositório de estoque.
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+builder.Services.AddScoped<ITokenService, TokenService>();
 // Adiciona novamente os controllers, mas com uma configuração extra para usar o pacote Newtonsoft.Json.
 // Essa configuração é necessária para personalizar a serialização/deserialização JSON, como ignorar loops de referência (evita erros de serialização circular).
 builder.Services.AddControllers().AddNewtonsoftJson(options => {
