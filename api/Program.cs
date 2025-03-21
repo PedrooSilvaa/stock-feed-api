@@ -28,6 +28,7 @@ builder.Services.AddDbContext<ApplicationDBContext>(options => {
 //O mesmo acontece com os demais abaixo
 builder.Services.AddScoped<IStockRepository, StockReository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+builder.Services.AddScoped<IPortfolioRepository, PortfolioRepository>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 // Adiciona novamente os controllers, mas com uma configuração extra para usar o pacote Newtonsoft.Json.
 // Essa configuração é necessária para personalizar a serialização/deserialização JSON, como ignorar loops de referência (evita erros de serialização circular).
