@@ -16,5 +16,7 @@ namespace api.Models
         public int? StockId { get; set; }
         // Navigation Prop -> Example: Stock.Id, Stock.Company
         public Stock? Stock { get; set; }
+        public string AppUserId { get; set; }
+        public AppUser AppUser { get; set; }
     }
 }

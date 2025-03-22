@@ -49,6 +49,7 @@ namespace api.Repository
                 Purchase = stock.Stock.Purchase,
                 LastDiv = stock.Stock.LastDiv,
                 Industry = stock.Stock.Industry,
+                Comments = _context.Comment.Where(c => c.StockId == stock.StockId).ToList(),
                 MarketCap = stock.Stock.MarketCap,
             }).ToListAsync();
         }

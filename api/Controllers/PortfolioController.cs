@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using api.Extensions;
 using api.Interfaces;
+using api.Mappers;
 using api.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -34,7 +35,7 @@ namespace api.Controllers
             var username = User.GetUsername();
             var appUser = await _userManager.FindByNameAsync(username);
             var userPortfolio = await _portfolioRepo.GetUserPortfolio(appUser);
-            return Ok(userPortfolio);
+            return Ok(userPortfolio.Select(s => s.ToStockDto()));
         }
 
         [HttpPost]
